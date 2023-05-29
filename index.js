@@ -1,4 +1,7 @@
 const dynamic = document.querySelector('#dynamic');
+const addBtn = document.querySelector('#add')
+const titleInput = document.querySelector('#title');
+const authorInput = document.querySelector('#author');
 const listOfBooks = [{
     title: 'atomic habit',
     author: 'James Clear',
@@ -13,7 +16,7 @@ const listOfBooks = [{
 }
 ]
 
-function addBooks(bookTitle, authorName){
+function addBooks(title, author){
     const tempBook = {
         title,
         author,
@@ -21,12 +24,12 @@ function addBooks(bookTitle, authorName){
     listOfBooks.push(tempBook);
     const addedBooks = document.querySelector('.addbook');
 const book = document.createElement('div');
-const title = document.createElement('p');
-title.innerText = tempBook.title;
-book.append(title);
-const author = document.createElement('p');
-author.innerText = tempBook.author;
-book.append(author);
+const bookTitle = document.createElement('p');
+bookTitle.innerText = tempBook.title;
+book.append(bookTitle);
+const bookAuthor = document.createElement('p');
+bookAuthor.innerText = tempBook.author;
+book.append(bookAuthor);
 const removeBtn = document.createElement('button');
 removeBtn.innerText = 'remove';
 book.append(removeBtn);
@@ -64,3 +67,7 @@ function bookLoders() {
     dynamic.append(book);
   }
 }
+
+addBtn.addEventListener('click', () => {
+  addBooks(titleInput.value, authorInput.value);
+});
